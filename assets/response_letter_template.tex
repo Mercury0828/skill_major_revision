@@ -1,0 +1,230 @@
+\documentclass[11pt]{article}
+
+%=========== [ 1. PREAMBLE ] ===================================
+% Response letter template. Extracted from a real major-revision letter.
+% Copy this file, fill in the title block and the per-comment sections.
+% Host dependency: the bibliography uses \bibliographystyle{IEEEtran},
+% so IEEEtran.bst must be present on the build machine (included in any
+% standard IEEE LaTeX setup); on a bare TeX install the bibtex step
+% fails without it.
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage[left=1in, right=1in, top=1in, bottom=1in]{geometry}
+\usepackage{enumitem}
+\usepackage[RGB]{xcolor}
+\usepackage{tcolorbox}
+\tcbuselibrary{breakable}     % let colored boxes break across pages
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{array}
+\usepackage[numbers,sort&compress]{natbib}
+
+% Theorem environments, so full propositions and proofs can be
+% reproduced inside the revised blocks.
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{definition}{Definition}
+
+% Roman section numbering: I., II., ...
+\renewcommand\thesection{\Roman{section}.}
+
+% Section titles: small caps, centered, bold, auto-uppercased.
+\titleformat{\section}
+  {\small\scshape\centering\bfseries}
+  {\thesection}{0.5em}{\MakeUppercase}
+\titlespacing*{\section}{0pt}{0.6em}{0.4em}
+
+% --- Hyperlink setup ---
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,
+    urlcolor=cyan,
+}
+
+% --- Block colors ---
+\definecolor{responseblue}{RGB}{188, 211, 229}   % response block: soft blue
+\definecolor{reviseblue}{RGB}{170, 229, 237}     % revised block: light cyan
+\definecolor{referenceyellow}{RGB}{255, 221, 173} % reference block: light yellow
+
+% --- Float handling inside boxes ---
+% tcolorbox cannot hold floating figure/table environments. This macro
+% downgrades them to centered inline content, so tables and figures can
+% be placed directly inside response and revised blocks.
+\newcommand{\nofloatsinbox}{
+    \renewenvironment{figure}[1][]{% ignore [t], [b], ... placement args
+        \begin{center}
+        \captionsetup{type=figure}% allow \caption inside the box
+    }{%
+        \end{center}
+    }
+    \renewenvironment{table}[1][]{%
+        \begin{center}
+        \captionsetup{type=table}
+    }{%
+        \end{center}
+    }
+}
+
+% Paragraph style inside boxes: no first-line indent, spaced paragraphs.
+\newcommand{\boxparstyle}{
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{0.8em}
+}
+
+% --- The four block environments ---
+
+% 1. Comment block: white background, quotes the reviewer verbatim.
+\newenvironment{commentblock}[1][Comment]{%
+  \par\noindent\textbf{#1:} %
+}{\par}
+
+% 2. Response block: blue background, holds the response with its
+%    own tables and figures.
+\newtcolorbox{responseblock}{
+    colback=responseblue,
+    colframe=responseblue,  % frame matches background: invisible border
+    boxsep=5pt,
+    arc=0mm,
+    left=5pt, right=5pt, top=5pt, bottom=5pt,
+    breakable,
+    before upper={\nofloatsinbox \boxparstyle},
+}
+
+% 3. Revised block: light cyan, holds the exact revised manuscript text.
+\newtcolorbox{revisedblock}{
+    colback=reviseblue,
+    colframe=reviseblue,
+    boxsep=5pt,
+    arc=0mm,
+    left=5pt, right=5pt, top=5pt, bottom=5pt,
+    breakable,
+    fonttitle=\bfseries,
+    before upper={\nofloatsinbox \boxparstyle},
+}
+
+% 4. Reference block: light yellow, holds the letter's own bibliography.
+\newtcolorbox{referenceblock}{
+    colback=referenceyellow,
+    colframe=referenceyellow,
+    boxsep=5pt,
+    arc=0mm,
+    left=5pt, right=5pt, top=5pt, bottom=5pt,
+    breakable,
+    fonttitle=\bfseries,
+    before upper={\nofloatsinbox \boxparstyle},
+}
+
+
+%=========== [ 2. DOCUMENT ] =====================================
+\begin{document}
+
+% --- Title block ---
+\begin{center}
+    \Large\bfseries
+    Response Letter of \\
+    \vspace{0.4cm}
+    \large
+    [Paper Title] \\
+    \vspace{0.4cm}
+    Article Number: [XXXX-NNNNN-YYYY]
+\end{center}
+
+\vspace{0.6cm}
+
+% --- Opening paragraph ---
+% Thank the editor and reviewers. Summarize each reviewer's concerns in
+% one sentence each. Explain the letter layout.
+We would like to thank the editor for handling this manuscript and giving us the opportunity to revise the manuscript. We would also like to express our appreciation to the reviewers for providing us with valuable comments for improving the manuscript. Specifically, Reviewer 1 raised important concerns regarding [one-sentence summary of Reviewer 1's concerns]. Reviewer 2 provided valuable suggestions on [one-sentence summary of Reviewer 2's concerns]. In the following, we present a point-by-point reply to the reviewers' comments. For clarity, each comment is followed by our response and the corresponding revision made in the manuscript. The ``Revised Version'' has the changes highlighted so they are easy to see, and we hope you find our new revision satisfactory. If there are further comments, we will be pleased to address them as well.
+
+
+% --- Response to the Associate Editor ---
+\section*{I. Response to Associate Editor}
+
+\begin{commentblock}{Associate Editor}
+[Quote the editor's summary or decision text here.]
+\end{commentblock}
+
+\begin{responseblock}
+\textbf{Response:} We sincerely thank the Associate Editor for coordinating the review process and for this opportunity to revise our manuscript. We have carefully considered the reviewers' concerns and revised the manuscript to address all of these points in detail.
+
+For your convenience, we have summarized the main modifications made in the revised manuscript in the list below.
+
+\noindent\textbf{List of Main Modifications in the Revised Manuscript:}
+\begin{enumerate}[label=Modification \arabic*:, leftmargin=*]
+    \item [One line per major change: what was added or revised, and in which section.]
+\end{enumerate}
+\end{responseblock}
+
+\vspace{0.5cm}
+
+Thanks to your guidance, we now believe these revisions have significantly strengthened the manuscript, and we hope that you will now find it suitable for publication.
+
+\newpage
+
+
+% --- Responses to Reviewer 1 ---
+\section*{II. RESPONSES TO REVIEWER 1}
+
+% Per comment: commentblock -> responseblock -> one or more revisedblocks.
+% Split compound comments into numbered sub-points (1.1, 1.2, ...).
+
+\begin{commentblock}
+[Comment 1.1] [Reviewer's comment, quoted verbatim.]
+\end{commentblock}
+
+\begin{responseblock}
+% Five-move anatomy:
+% 1. Thank + specific concession.
+% 2. Diagnose what the previous manuscript did and why it fell short.
+% 3. The fix, in full detail (tables and figures go right here).
+% 4. Careful interpretation; state any claim that was weakened.
+% 5. Pointer to the manuscript location.
+We thank the reviewer for pointing out this issue. We agree that [specific, genuine concession naming the actual gap].
+
+[Diagnosis of the previous version.]
+
+[Full description of the fix: experiment setup and results, corrected proof, or new wording. Place tables and figures directly in this block.]
+
+[Interpretation. If a real error was admitted, add the impact statement: ``This correction does not affect the main results or the conclusions of the paper.'' or state honestly what changes.]
+
+The specific correction has been made in Section [N] of the revised manuscript, as shown below.
+\end{responseblock}
+
+\begin{revisedblock}
+\textbf{Revision in [Section Name] (Section [N]):}
+
+\textit{[One italic line locating the change: what was added or revised and where it sits in the section.]}
+
+[The exact revised manuscript text, verbatim. This text must match revised\_manuscript.tex character for character.]
+\end{revisedblock}
+
+
+\newpage
+
+% --- Responses to Reviewer 2 ---
+\section*{III. RESPONSES TO REVIEWER 2}
+
+% Same structure. For a comment already answered for Reviewer 1, give a
+% self-contained summary and close with an explicit cross-reference:
+% "This correction is the same revision made in response to Reviewer 1,
+%  Comment 4, where the complete revised proof is provided."
+
+
+\newpage
+
+% --- The letter's own bibliography ---
+\begin{referenceblock}
+\bibliographystyle{IEEEtran}
+\bibliography{response_refs}
+\end{referenceblock}
+
+\end{document}
