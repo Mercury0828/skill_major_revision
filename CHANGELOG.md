@@ -2,6 +2,14 @@
 
 All notable changes to this skill. Keep entries short, newest on top.
 
+## [0.1.2] - 2026-06-14
+- Added an **improve-before-conceding** rule to the experiments protocol: on a failed or unfavorable result, do not
+  default to an honest caveat first — diagnose the consequence, try a legitimate improvement (fairer/reviewer-proposed
+  baseline, more data, better metric, representative vs. adversarial regime, sharper framing), and rerun; concede only
+  when improvement is exhausted or the trend is genuinely wrong. Red line unchanged (no massaging/fabrication);
+  integrity-sensitive reframes that move a headline number are surfaced to the user before applying. Adds a closing-phase
+  task: re-review every earlier honest caveat once the last comment is done. Driven by live-revision feedback.
+
 ## [0.1.1] - 2026-06-14
 - Strengthened the response-anatomy rule into a **self-contained-responses** principle (reviewer comfort first):
   each response must stand alone; restate key numbers/evidence/conclusions inline and **duplicate supporting
