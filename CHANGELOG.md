@@ -2,6 +2,14 @@
 
 All notable changes to this skill. Keep entries short, newest on top.
 
+## [0.1.1] - 2026-06-14
+- Strengthened the response-anatomy rule into a **self-contained-responses** principle (reviewer comfort first):
+  each response must stand alone; restate key numbers/evidence/conclusions inline and **duplicate supporting
+  figures/tables** into every response that uses them; cross-references are courtesy-only, never the sole home of
+  the substance; cross-reviewer pointers for substance are forbidden (copy the figure and numbers instead). Driven
+  by reviewer-experience feedback from a live revision (a Reviewer-2 point had pointed to Reviewer-1 responses for
+  its evidence; fixed by duplicating the figures and numbers into the Reviewer-2 point).
+
 ## [0.1.0] - 2026-06-12
 Initial version, extracted from a completed major-revision project (full paper plus its response letter).
 
